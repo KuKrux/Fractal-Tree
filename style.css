@@ -13,13 +13,13 @@ canvas {
     border: none;
     position: absolute;
     left: 0;
-    bottom: 5%;
+    bottom: 10%;
     z-index: 10;
     left: 40%;
     transform: translate(-50%, 0);
     padding: 20px 30px;
     border-radius: 50px;
-    background: white;
+    background: greenyellow;
     color: black;
     font-size: 20px;
     width: 300px;
@@ -30,15 +30,32 @@ canvas {
     outline: none;
     border: none;
     position: absolute;
-    bottom: 5%;
+    bottom: 10%;
     z-index: 11;
     left: 60%;
     transform: translate(-50%, 0);
     padding: 20px 30px;
     border-radius: 50px;
-    background: yellow;
+    background: lightcoral;
     color: black;
     font-size: 20px;
     width: 300px;
     overflow: hidden;
-}  
+}
+.copy-seed-button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    position: absolute;
+    bottom: 1.5%;
+    left: 50%;
+    z-index: 9;
+    transform: translate(-50%, 0);
+    padding: 20px 30px;
+    border-radius: 50px;
+    background: white;
+    color: black;
+    font-size: 20px;
+    width: 300px;
+    overflow: hidden;
+}

@@ -10,7 +10,8 @@
     <body>
         <canvas></canvas>
         <button class="clear-canvas-button" onclick="clearScreen()">Clear Canvas</button>
-        <button class="generate-tree-button" onclick="drawTree(canvas.width/2, canvas.height - 80, getRandomArbitrary(100, 150), getRandomArbitrary(-4, 4), 15, '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0'), '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0'))">Generate Tree</button>
+        <button class="generate-tree-button" onclick="generateTree()">Generate Tree</button>
+        <button class="copy-seed-button" onclick="copySeed()">Click To Copy Seed</button>
         <script src="fractalTreeScript.js"></script>
     </body>
 </html>

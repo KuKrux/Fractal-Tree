@@ -1,16 +1,31 @@
 const canvas = document.querySelector('canvas');
 const generateButton = document.querySelector('.generate-tree-button');
 const clearButton = document.querySelector('.clear-canvas-button');
+const textBox = document.querySelector('.copy-seed-button');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
+
+
+function clearScreen() { // "Clear Canvas" Button
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function copySeed() { // "Click To Copy Seed" Button
+
+}
+
+function generateTree() { // "Generate Tree" Button
+    drawTree(canvas.width/2, canvas.height - 80, getRandomArbitrary(100, 150), getRandomArbitrary(-4, 4), 15, getRandomHexcolor(), getRandomHexcolor())
+}
 
 function drawTree(startX, startY, len, angle, branchWidth, color1, color2,) {
     if (len < getRandomArbitrary(1, 20)) { //change behaviour after a certain length
         ctx.strokeStyle = color2;
         ctx.fillStyle = color2;
         branchWidth *= getRandomArbitrary(1, 4);
-    } else {  //if no specific length if reached
+    } else {  //if no specific length is reached
         ctx.strokeStyle = color1;
         ctx.fillStyle = color1;
     }
@@ -35,13 +50,12 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-function clearScreen() {
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
+function getRandomHexcolor() {
+    return '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+} 
 
 window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    drawTree(canvas.width/2, canvas.height - 80,100,0, 15, 'brown', 'green');
+    drawTree(canvas.width/2, canvas.height - 80, getRandomArbitrary(100, 150), getRandomArbitrary(-4, 4), 15, getRandomHexcolor(), getRandomHexcolor())
 });
