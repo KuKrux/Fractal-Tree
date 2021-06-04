@@ -5,11 +5,12 @@ const textBox = document.querySelector('.copy-seed-button');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
-
+var tempSplits = 0;
+var maxSplits = 0;
 
 function clearScreen() { // "Clear Canvas" Button
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
 
 function copySeed() { // "Click To Copy Seed" Button
@@ -17,6 +18,9 @@ function copySeed() { // "Click To Copy Seed" Button
 }
 
 function generateTree() { // "Generate Tree" Button
+    console.log(maxSplits);
+    tempSplits = 0;
+    maxSplits = 0;
     drawTree(canvas.width/2, canvas.height - 80, getRandomArbitrary(100, 150), getRandomArbitrary(-4, 4), 15, getRandomHexcolor(), getRandomHexcolor())
 }
 
@@ -24,7 +28,7 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2,) {
     if (len < getRandomArbitrary(1, 20)) { //change behaviour after a certain length
         ctx.strokeStyle = color2;
         ctx.fillStyle = color2;
-        branchWidth *= getRandomArbitrary(1, 4);
+        branchWidth *= (getRandomArbitrary(5, 10)*0.1+1);
     } else {  //if no specific length is reached
         ctx.strokeStyle = color1;
         ctx.fillStyle = color1;
@@ -39,10 +43,15 @@ function drawTree(startX, startY, len, angle, branchWidth, color1, color2,) {
     ctx.stroke();
     if (len < 10) { //length limiter
         ctx.restore();
+        if (tempSplits > maxSplits) {
+             maxSplits = tempSplits;
+             return;
+        } 
         return;
     }
-    drawTree(0, -len, len*0.8, angle+6, branchWidth * 0.7, color1, color2); // generate two more lines out of one
-    drawTree(0, -len, len*0.8, angle-6, branchWidth * 0.7, color1, color2); //
+    tempSplits += 1;
+    drawTree(0, -len, len*0.8, angle + getRandomArbitrary(5, 10), branchWidth * (getRandomArbitrary(5, 10)*0.1), color1, color2); // generate two more lines out of one
+    drawTree(0, -len, len*0.8, angle - getRandomArbitrary(5, 10), branchWidth * (getRandomArbitrary(5, 10)*0.1), color1, color2); //
     ctx.restore();
 }
 

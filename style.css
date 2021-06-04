@@ -59,3 +59,24 @@ canvas {
     width: 300px;
     overflow: hidden;
 }
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    left: 90%;
+    z-index: 5;
+}
+.flex-container > div {
+    background-color: blueviolet;
+    color: white;
+    width: 10vw;
+    height: 10vh;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    left: 50%;
+    z-index: 6;
+  }
